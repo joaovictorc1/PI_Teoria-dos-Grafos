@@ -1,0 +1,56 @@
+graph ISP_Network {
+    // Configurações de layout
+    layout=neato;
+    overlap=false;
+    node [fontname="Helvetica,Arial,sans-serif"];
+    edge [fontname="Helvetica,Arial,sans-serif", fontsize=10];
+
+    // 1. Roteadores Core (Espinha Dorsal) - Hexágonos Vermelhos
+    node [shape=hexagon, style=filled, fillcolor="#ff9999", fontcolor=black];
+    CR_Norte [label="Core Norte"];
+    CR_Sul [label="Core Sul"];
+
+    // 2. Roteadores de Distribuição (Gargalos Regionais) - Caixas Laranjas
+    node [shape=box, style=filled, fillcolor="#ffcc66", fontcolor=black];
+    DR_Norte [label="Dist. Norte"];
+    DR_Sul [label="Dist. Sul"];
+    DC_GW [label="Data Center GW"];
+
+    // 3. Roteadores de Acesso e Servidores (Borda) - Círculos Azuis
+    node [shape=circle, style=filled, fillcolor="#99ccff", fontcolor=black];
+    Acc_N1 [label="Acesso N1"];
+    Acc_N2 [label="Acesso N2"];
+    Acc_S1 [label="Acesso S1"];
+    Acc_S2 [label="Acesso S2"];
+    DC_Srv1 [label="Servidor 1"];
+    DC_Srv2 [label="Servidor 2"];
+
+    // 4. Conexões Externas - Diamante Cinza
+    node [shape=diamond, style=filled, fillcolor="#e0e0e0"];
+    Ext_Peering [label="Peering Internet"];
+
+    // --- TOPOLOGIA E CUSTOS DE CABEAMENTO ---
+
+    // Backbone e Links Críticos
+    Ext_Peering -- CR_Norte [label="10", weight=10];
+    CR_Norte -- CR_Sul [label="90", weight=90, color="red", penwidth=2]; // Link vital de alto custo
+
+    // Distribuição Norte
+    CR_Norte -- DR_Norte [label="30", weight=30];
+    DR_Norte -- Acc_N1 [label="20", weight=20];
+    DR_Norte -- Acc_N2 [label="40", weight=40]; 
+    Acc_N1 -- Acc_N2 [label="15", weight=15]; // Redundância barata na borda
+
+    // Distribuição Sul
+    CR_Sul -- DR_Sul [label="25", weight=25];
+    DR_Sul -- Acc_S1 [label="55", weight=55]; // Caminho propositalmente caro
+    DR_Sul -- Acc_S2 [label="35", weight=35];
+    Acc_S1 -- Acc_S2 [label="20", weight=20]; 
+
+    // Data Center
+    CR_Sul -- DC_GW [label="15", weight=15];
+    DC_GW -- DC_Srv1 [label="5", weight=5];
+    DC_GW -- DC_Srv2 [label="12", weight=12];
+    DC_Srv1 -- DC_Srv2 [label="8", weight=8]; 
+}
+
