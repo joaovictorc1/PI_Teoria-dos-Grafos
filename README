@@ -1,0 +1,26 @@
+ESTRUTURA DE DIRETÓRIOS DO PROJETO:
+
+    /src: Destinada aos arquivos de código-fonte .c, atendendo ao requisito de implementação autoral em linguagem C. É onde você alocará as implementações estruturais e os algoritmos de busca.  
+    
+    /include: Reservada para os arquivos de cabeçalho .h. A modularização das assinaturas de funções e structs é inegociável na nossa engenharia.
+    
+    /data: Armazena as bases de dados reais, nos formatos CSV, JSON ou txt, que alimentarão o sistema.  
+    
+    /docs: Local designado para o manuscrito do artigo científico de 4 a 6 páginas e eventuais relatórios de modelagem.  
+    
+    /obj: Diretório essencial para isolar os arquivos binários intermediários (.o) gerados durante o processo de compilação, evitando a poluição técnica do código-fonte.
+    
+    /bin: Destino final da compilação, onde a sua aplicação executável localmente deve residir isolada do resto do projeto.  
+    
+    Makefile: Script na raiz do projeto para automatizar a compilação, lendo de /src e /include, depositando os .o em /obj e o executável final em /bin.
+    
+    .gitignore: Arquivo vital para impedir que os diretórios /obj e /bin (ou qualquer lixo do sistema operacional) subam para o repositório, garantindo que apenas código-fonte, dados e documentos sejam versionados.
+
+
+EXEMPLOS DE COMMITS:
+
+ - feat: adiciona estrutura de dados para lista de adjacencia
+
+ - docs: insere template da sbc no diretorio de documentacao
+
+ - fix: corrige vazamento de memoria na destruicao do grafo
