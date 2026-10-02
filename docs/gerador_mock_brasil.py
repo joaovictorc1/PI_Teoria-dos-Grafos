@@ -36,7 +36,7 @@ def gerar_dados_mock(num_vertices=1000):
             
         # Adiciona arestas aleatórias (esparsidade de uma rede real)
         num_arestas_extras = num_vertices * 2
-        for _ in range(num_arestas_extras):
+       for _ in range(num_arestas_extras):
             u = random.randint(0, num_vertices - 1)
             v = random.randint(0, num_vertices - 1)
             if u != v:
