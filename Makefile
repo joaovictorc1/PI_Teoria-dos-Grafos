@@ -1,13 +1,14 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -std=c11 -lm
+CPPFLAGS = -I.
 TARGET = main
-SRC = *.c
+SRC = main.c $(wildcard src/*.c)
 OBJ = *.o
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $(TARGET) $(SRC)
 
 clean:
 	rm -f $(TARGET) $(OBJ)
