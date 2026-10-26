@@ -53,4 +53,3 @@ graph ISP_Network {
     DC_GW -- DC_Srv2 [label="12", weight=12];
     DC_Srv1 -- DC_Srv2 [label="8", weight=8]; 
 }
-
