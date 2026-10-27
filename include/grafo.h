@@ -4,6 +4,7 @@
 
 typedef struct No {
     int destino;
+    double peso;
     struct No* proximo;
 } No;
 
@@ -14,7 +15,10 @@ typedef struct Grafo {
 } Grafo;
 
 Grafo* criar_grafo(int num_vertices);
-void adicionar_aresta(Grafo* g, int origem, int destino);
+void adicionar_aresta(Grafo* g,
+    int origem,
+    int destino,
+    double peso);
 void liberar_grafo(Grafo* g);
 
 #endif

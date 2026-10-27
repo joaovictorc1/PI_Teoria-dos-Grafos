@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -25,7 +26,7 @@ Grafo* carregar_dataset(const char* nome_arquivo, int num_vertices) {
         // Tenta extrair dois inteiros da linha
         if (sscanf(linha, "%d %d", &u, &v) == 2) {
             if (u < num_vertices && v < num_vertices) {
-                adicionar_aresta(g, u, v);
+                adicionar_aresta(g, u, v, 1.0);
             }
         }
     }
